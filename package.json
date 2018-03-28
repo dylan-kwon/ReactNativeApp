@@ -1,0 +1,42 @@
+{
+  "name": "react-native-app",
+  "version": "0.0.1",
+  "private": true,
+  "scripts": {
+    "test": "jest",
+    "flow": "flow",
+    "build-ios": "react-native run-ios",
+    "build-android": "react-native run-android"
+  },
+  "dependencies": {
+    "@babel/core": "7.0.0-beta.42",
+    "@types/jest": "22.2.2",
+    "@types/node": "9.6.0",
+    "@types/react-native": "0.52.19",
+    "prop-types": "15.6.1",
+    "react": "16.2.0",
+    "react-native": "0.52.2",
+    "webpack": "^4.2.0"
+  },
+  "devDependencies": {
+    "ajv": "6.0.0",
+    "babel-cli": "6.26.0",
+    "babel-eslint": "8.2.1",
+    "babel-jest": "22.4.3",
+    "babel-preset-flow": "^6.23.0",
+    "babel-preset-react-native": "4.0.0",
+    "eslint": "4.19.1",
+    "eslint-plugin-babel": "4.1.2",
+    "eslint-plugin-flowtype": "2.46.1",
+    "eslint-plugin-react": "7.7.0",
+    "eslint-plugin-react-native": "3.2.1",
+    "flow-bin": "^0.65.0",
+    "flow-typed": "2.4.0",
+    "jest": "22.4.3",
+    "react-dom": "16.2.0",
+    "react-test-renderer": "16.2.0"
+  },
+  "jest": {
+    "preset": "react-native"
+  }
+}
