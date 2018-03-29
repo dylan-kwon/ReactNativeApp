@@ -4,6 +4,9 @@ import { AppRegistry, TextInput } from 'react-native';
 // import StyleApp from './app/03_layout/LayoutApp';
 // import TextInputApp from './app/04_TextInput/TextInputApp';
 // import HandlingApp from './app/05_Handing/HandlingApp'
-import ScrollViewApp from './app/06_ScrollView/ScrollViewApp'
+// import ScrollViewApp from './app/06_ScrollView/ScrollViewApp'
+// import ListViewApp from './app/07_ListViewApp/ListViewApp'
+import SectionList from './app/08_SectionList/SectionListApp'
 
-AppRegistry.registerComponent('ReactNativeApp', () => ScrollViewApp);
+AppRegistry.registerComponent('ReactNativeApp', () => SectionList
+);
