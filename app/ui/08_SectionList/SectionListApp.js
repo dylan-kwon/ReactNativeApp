@@ -24,7 +24,7 @@ export default class SectionListApp extends Component<Props, State> {
             sectionItems: []
         };
 
-        this.makeSections(100000, 3);
+        this.makeSections(30, 3);
     }
 
     makeSections(sectionCount: number, childCount: number): void {
