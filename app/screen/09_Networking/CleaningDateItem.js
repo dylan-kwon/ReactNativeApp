@@ -1,6 +1,6 @@
 // @flow
 import React, { Component } from 'react';
-import { StyleSheet, View, Text } from 'react-native';
+import { StyleSheet, View, Text, ToastAndroid } from 'react-native';
 import type { Cleaning } from './CleainngItem'
 
 type Props = {
@@ -34,7 +34,6 @@ export default class CleaningDateItem extends Component<Props, State> {
             </View>
         );
     }
-
 }
 
 const styles = StyleSheet.create({

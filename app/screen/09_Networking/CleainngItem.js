@@ -46,7 +46,7 @@ export default class CleaningItem extends Component<Props, State> {
 
         return (
             <TouchableOpacity
-                activeOpacity={0.7                }
+                activeOpacity={0.7}
                 onPress={onPressItem}>
 
                 <View style={styles.container}>

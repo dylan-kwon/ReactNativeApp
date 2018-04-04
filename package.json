@@ -6,17 +6,20 @@
     "test": "jest",
     "flow": "flow",
     "build-ios": "react-native run-ios",
-    "build-android": "react-native run-android"
+    "build-android": "react-native run-android",
+    "start-avd": "/Users/seokchan.kwon/Library/Android/sdk/tools/emulator -avd Nexus_6P_API_23"
   },
   "dependencies": {
     "@babel/core": "7.0.0-beta.42",
     "@types/jest": "22.2.2",
     "@types/node": "9.6.0",
     "@types/react-native": "0.52.19",
+    "@types/react-navigation": "^1.5.4",
     "prop-types": "15.6.1",
     "react": "16.2.0",
     "react-native": "0.52.2",
-    "webpack": "^4.2.0"
+    "react-navigation": "1.5.9",
+    "webpack": "^4.4.1"
   },
   "devDependencies": {
     "ajv": "6.0.0",

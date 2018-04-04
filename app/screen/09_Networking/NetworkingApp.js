@@ -1,6 +1,8 @@
 // @flow
 import React, { Component } from 'react';
-import { StyleSheet, View, FlatList, SectionList, ToastAndroid } from 'react-native';
+import { Platform, StyleSheet, View, FlatList, SectionList, ToastAndroid } from 'react-native';
+
+import RootStackNavigator from '../../App';
 
 import CleaningItem from './CleainngItem';
 import CleaningDateItem from './CleaningDateItem';
@@ -11,10 +13,12 @@ import type { CleaningDate } from './CleaningDateItem';
 import { fetchCleanings } from '../../util/networking/repository/CleaningRepository';
 
 type Props = {
+    navigation: RootStackNavigator
 };
 
 type State = {
     cleaningDates: CleaningDate[],
+    isVisibility: boolena
 };
 
 export default class NetworkingApp extends Component<Props, State> {
@@ -23,14 +27,18 @@ export default class NetworkingApp extends Component<Props, State> {
         super(props);
 
         this.state = {
-            cleaningDates: []
+            cleaningDates: [],
+            isVisibility: false
         };
+
+        let params = this.props.navigation.state.params;
+        console.log('navigation.state.id = ' + params.id);
+        console.log('navigation.state.title = ' + params.title);
     }
 
     componentDidMount() {
         fetchCleanings(1, 0, 1)
             .then((responseJson) => {
-            console.log('test = responseJson = ' + responseJson.result_data.cleaning_dates);
                 let cleaningDates = responseJson.result_data.cleaning_dates;
                 for (let cleaningDate of cleaningDates) {
                     cleaningDate.data = cleaningDate.cleanings;
@@ -44,6 +52,10 @@ export default class NetworkingApp extends Component<Props, State> {
             .catch((error) => {
                 console.error(error);
             });
+
+        Platform.OS === 'android' ?
+            ToastAndroid.show('platform: Android sdk' + Platform.Version, ToastAndroid.SHORT) :
+            console.log('platform: Ios version ' + Platform.Version)
     }
 
     keyExtractor = (item: Cleaning, index: number) => {
@@ -82,6 +94,8 @@ export default class NetworkingApp extends Component<Props, State> {
     }
 
     render() {
+        let isVisibility = this.state.isVisibility;
+
         return (
             <SectionList
                 style={styles.container}
