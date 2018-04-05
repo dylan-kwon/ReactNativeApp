@@ -3,7 +3,7 @@ const IS_REAL_SERVER: string = 'http://www.handys.co.kr/';
 const RESULT_CODE: Object = {
     SUCCESS: 200,
     FAIL: 210,
-    TOKEN_ERROR: 444,
+    TOKEN_ERROR: 444
 }
 
 const METHOD: Object = {
@@ -26,40 +26,35 @@ const HEADER: Object = {
 function makeFetch(api: string, method: METHOD, header?: ?Object, body?: ?Object) {
     let url = IS_REAL_SERVER + api
 
+    console.log('url: -> ' + url);
+    console.log('method: -> ' + method)
+
     if (header) {
         header = mergeHeader(copyHeader(HEADER), header);
     } else {
-        header = copyHeader(HEADER)
+        header = copyHeader(HEADER);
     }
-
-    console.log('url: -> ' + url);
-    console.log('method: -> ' + method)
 
     for (let key in header) {
         let value = header[key];
         console.log('header: -> ' + key + ':' + value);
     }
 
+    let request = {
+        method: method,
+        headers: header
+    };
+
     if (method !== METHOD.GET) {
-        return fetch(url, {
-            method: method,
-            headers: header
-        });
+        request.body = JSON.stringify(body);;
 
-    } else {
-        body = JSON.stringify(body);
-
-        for (let key in body) {
+        for (let key in request.body) {
             let value = body[key];
             console.log('body: -> ' + key + ':' + value);
         }
-
-        return fetch(url, {
-            method: method,
-            headers: header,
-            body: body
-        });
     }
+    
+    return fetch(url, request);
 }
 
 function copyHeader(header: Object): Object {

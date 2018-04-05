@@ -1,8 +1,11 @@
 // @flow
 import React, { Component } from 'react';
-import { StyleSheet, View, Button, Text, TouchableOpacity } from 'react-native';
+import { StyleSheet, View, Button, Text, TouchableOpacity, Image, ToastAndroid } from 'react-native';
 
 import RootStackNavigator from '../../App'
+
+import CleaningList from '../09_Networking/NetworkingApp'
+import { HeaderTitle, HeaderLeft, HeaderRight } from '../00_Header/HeaderComponent'
 
 type Props = {
     navigation: RootStackNavigator
@@ -16,8 +19,33 @@ export default class NavigationHome extends Component<Props, State> {
 
     static navigationOptions = ({ navigation }: RootStackNavigator) => {
         let params = navigation.state.params;
+        let headerTitle = params ? 'Home' + '(' + params.updateCount + ')' : 'Home';
+
         return {
-            title: params ? params.title : 'Home'
+            headerStyle: {
+                backgroundColor: '#ffffff'
+            },
+            headerTitle: (
+                <HeaderTitle
+                    title={headerTitle}
+                    onPress={() => {
+                        ToastAndroid.show('onClickHeaderTitle', ToastAndroid.SHORT);
+                    }} />
+            ),
+            headerLeft: (
+                <HeaderLeft
+                    title={'LB'}
+                    onPress={() => {
+                        ToastAndroid.show('onClickHeaderLeft', ToastAndroid.SHORT);
+                    }} />
+            ),
+            headerRight: (
+                <HeaderRight
+                    title={'RB'}
+                    onPress={() => {
+                        ToastAndroid.show('onClickHeaderRight', ToastAndroid.SHORT);
+                    }} />
+            )
         }
     }
 
@@ -30,9 +58,8 @@ export default class NavigationHome extends Component<Props, State> {
     }
 
     updateTitle = () => {
-        let updateCount = this.state.updateCount += 1;
         let params = {
-            title: 'updated' + '(' + updateCount + ')'
+            updateCount: this.state.updateCount += 1
         }
         this.props.navigation.setParams(params);
     }
@@ -52,7 +79,7 @@ export default class NavigationHome extends Component<Props, State> {
                 <View style={styles.rowContainer}>
 
                     <TouchableOpacity
-                        style={styles.button}
+                        style={styles.buttonLeft}
                         activeOpacity={0.7}
                         onPress={this.updateTitle}>
 
@@ -63,7 +90,7 @@ export default class NavigationHome extends Component<Props, State> {
                     </TouchableOpacity>
 
                     <TouchableOpacity
-                        style={styles.button}
+                        style={styles.buttonCenter}
                         activeOpacity={0.7}
                         onPress={this.moveCleaningList}>
 
@@ -74,7 +101,7 @@ export default class NavigationHome extends Component<Props, State> {
                     </TouchableOpacity>
 
                     <TouchableOpacity
-                        style={styles.button}
+                        style={styles.buttonRight}
                         activeOpacity={0.7}>
 
                         <Text style={styles.text}>
@@ -105,12 +132,30 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         justifyContent: 'space-between'
     },
-    button: {
-        width: '31.5%',
+    buttonLeft: {
+        flex: 1,
         height: '100%',
         backgroundColor: '#3dbff0',
         alignItems: 'center',
         justifyContent: 'center',
+        marginRight: 2.5
+    },
+    buttonCenter: {
+        flex: 1,
+        height: '100%',
+        backgroundColor: '#3dbff0',
+        alignItems: 'center',
+        justifyContent: 'center',
+        marginLeft: 2.5,
+        marginRight: 2.5
+    },
+    buttonRight: {
+        flex: 1,
+        height: '100%',
+        backgroundColor: '#3dbff0',
+        alignItems: 'center',
+        justifyContent: 'center',
+        marginLeft: 2.5,
     },
     text: {
         color: '#ffffff',

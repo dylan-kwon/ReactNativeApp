@@ -1,7 +1,7 @@
 // @flow
 import React, { Component } from 'react';
 import { StyleSheet, View, Image, Text, TouchableNativeFeedback, TouchableOpacity } from 'react-native';
-import cleaningImages from './Images/Images'
+import images from '../../Images/Images'
 
 type Props = {
     index: number,
@@ -41,7 +41,7 @@ export default class CleaningItem extends Component<Props, State> {
             onPressItem
         } = this.props
 
-        let image = cleaningImages[index % cleaningImages.length]
+        let image = images[index % images.length]
         let unit = cleaning.unit;
 
         return (

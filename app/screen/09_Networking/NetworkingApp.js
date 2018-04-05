@@ -18,7 +18,7 @@ type Props = {
 
 type State = {
     cleaningDates: CleaningDate[],
-    isVisibility: boolena
+    isVisibility: boolean
 };
 
 export default class NetworkingApp extends Component<Props, State> {
