@@ -53,7 +53,8 @@ export default class CleaningItem extends Component<Props, State> {
 
                     <Image
                         style={styles.image}
-                        source={image} />
+                        source={image}
+                        resizeMode={'cover'} />
 
                     <View style={styles.content} >
 

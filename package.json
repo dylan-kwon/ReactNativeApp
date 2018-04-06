@@ -14,12 +14,12 @@
     "@types/jest": "22.2.2",
     "@types/node": "9.6.0",
     "@types/react-native": "0.52.19",
-    "@types/react-navigation": "^1.5.4",
+    "@types/react-navigation": "1.5.5",
     "prop-types": "15.6.1",
     "react": "16.2.0",
     "react-native": "0.52.2",
     "react-navigation": "1.5.9",
-    "webpack": "^4.4.1"
+    "webpack": "^4.5.0"
   },
   "devDependencies": {
     "ajv": "6.0.0",

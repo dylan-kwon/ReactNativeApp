@@ -1,10 +1,31 @@
 // @flow
 import React, {Component} from 'react'
-import {StyleSheet, View} from 'react-native'
+import {StyleSheet, View, Image} from 'react-native'
+
+import { HeaderTitle } from '../00_Header/HeaderComponent'
+import globalStyle from '../00_Global/GloablStyle'
 
 type Props = {}
 
 export default class LayoutApp extends Component<Props> {
+
+    static navigationOptions = ({ navigation }: any) => {
+        let params = navigation.state.params;
+        return {
+            headerTitle: (
+                <HeaderTitle
+                    title={'Mail'} />
+            ),
+            headerTintColor: '#3dbff0',
+            tabBarLabel: 'Mail',
+            tabBarIcon: (
+                <Image
+                    style={globalStyle.tabBarIcon}
+                    resizeMode={'cover'}
+                    source={require('../../Images/TabIcon/ic_mail.png')} />
+            ),
+        }
+    }
 
     constructor(props: Props) {
         super(props);
@@ -36,7 +57,7 @@ const style = StyleSheet.create({
     container: {
         flex: 1,
         flexDirection: 'column',
-        alignItems: 'flex-end',
+        alignItems: 'flex-start',
     },
     childContainer: {
         flex: 1,
@@ -45,12 +66,12 @@ const style = StyleSheet.create({
     fixedChild50: {
         width: 50,
         height: 50,
-        backgroundColor: '#8ce9ff'
+        backgroundColor: '#8ce9ff',
     },
     fixedChild100: {
         width: 100,
         height: 100,
-        backgroundColor: '#9affd2'
+        backgroundColor: '#9affd2',
     },
     fixedChild150: {
         width: 150,

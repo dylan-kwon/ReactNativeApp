@@ -7,6 +7,8 @@ import RootStackNavigator from '../../App';
 import CleaningItem from './CleainngItem';
 import CleaningDateItem from './CleaningDateItem';
 
+import { HeaderTitle } from '../00_Header/HeaderComponent'
+
 import type { Cleaning } from './CleainngItem';
 import type { CleaningDate } from './CleaningDateItem';
 
@@ -22,6 +24,16 @@ type State = {
 };
 
 export default class NetworkingApp extends Component<Props, State> {
+
+    static navigationOptions = ({ navigation }: RootStackNavigator) => {
+        let params = navigation.state.params;
+        return {
+            headerTitle: (
+                <HeaderTitle title={'CleaningList'} />
+            ),
+            headerTintColor: '#3dbff0'
+        }
+    }
 
     constructor(props: Props) {
         super(props);

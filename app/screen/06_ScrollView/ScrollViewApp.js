@@ -1,6 +1,8 @@
 // @flow
 import React, { Component } from 'react';
-import { StyleSheet, View, ScrollView, FlatList } from 'react-native';
+import { StyleSheet, View, ScrollView, FlatList, Image } from 'react-native';
+import { HeaderTitle } from '../00_Header/HeaderComponent'
+import globalStyle from '../00_Global/GloablStyle'
 
 type Props = {
 };
@@ -9,6 +11,24 @@ type State = {
 };
 
 export default class ScrollViewApp extends Component<Props, State> {
+
+    static navigationOptions = ({ navigation }: any) => {
+        let params = navigation.state.params;
+        return {
+            headerTitle: (
+                <HeaderTitle
+                    title={'Home'} />
+            ),
+            headerTintColor: '#3dbff0',
+            tabBarLabel: 'Home',
+            tabBarIcon: (
+                <Image
+                    style={globalStyle.tabBarIcon}
+                    resizeMode={'cover'}
+                    source={require('../../Images/TabIcon/ic_home.png')} />
+            ),
+        }
+    }
 
     constructor(props: Props) {
         super(props);

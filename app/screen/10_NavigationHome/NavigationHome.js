@@ -19,7 +19,10 @@ export default class NavigationHome extends Component<Props, State> {
 
     static navigationOptions = ({ navigation }: RootStackNavigator) => {
         let params = navigation.state.params;
-        let headerTitle = params ? 'Home' + '(' + params.updateCount + ')' : 'Home';
+
+        let headerTitle = params ?
+            'Home' + '(' + params.updateCount + ')' :
+            'Home';
 
         return {
             headerStyle: {
@@ -72,6 +75,10 @@ export default class NavigationHome extends Component<Props, State> {
         this.props.navigation.navigate('CleaningList', params);
     }
 
+    moveTabScreen = () => {
+        this.props.navigation.navigate('TabScreen');
+    }
+
     render() {
         return (
             <View style={styles.container}>
@@ -102,10 +109,11 @@ export default class NavigationHome extends Component<Props, State> {
 
                     <TouchableOpacity
                         style={styles.buttonRight}
-                        activeOpacity={0.7}>
+                        activeOpacity={0.7}
+                        onPress={this.moveTabScreen}>
 
                         <Text style={styles.text}>
-                            {'None'}
+                            {'Tab'}
                         </Text>
 
                     </TouchableOpacity>
