@@ -44,7 +44,7 @@ export default class Animation extends Component<Props, State> {
         };
     }
 
-    startPadeAnimation = () => {
+    startFadeAnimation = () => {
         let toValue = this.state.isOpacity ? 0 : 1;
 
         Animated.timing(this.state.opacityAnimation, {
@@ -93,7 +93,7 @@ export default class Animation extends Component<Props, State> {
                 <TouchableOpacity
                     style={styles.button}
                     activeOpacity={0.7}
-                    onPress={this.startPadeAnimation} >
+                    onPress={this.startFadeAnimation} >
 
                     <Text
                         style={styles.text}
@@ -125,7 +125,7 @@ export default class Animation extends Component<Props, State> {
                 </TouchableOpacity>
 
                 <View style={styles.translateView} >
-                    <Animated.View style={[styles.translateCircle], {}} />
+                    <Animated.View style={[styles.translateCircle, {}]} />
                 </View>
 
             </ScrollView>
