@@ -76,7 +76,15 @@ export default class NavigationHome extends Component<Props, State> {
     }
 
     moveTabScreen = () => {
-        this.props.navigation.navigate('TabScreen');
+        this.props.navigation.navigate('TabNavigator');
+    }
+
+    moveDrawerNavigation = () => {
+        this.props.navigation.navigate('DrawerNavigator');
+    }
+
+    moveAnimation = () => {
+        this.props.navigation.navigate('Animation')
     }
 
     render() {
@@ -120,6 +128,42 @@ export default class NavigationHome extends Component<Props, State> {
 
                 </View>
 
+                <View style={styles.rowContainer}>
+
+                    <TouchableOpacity
+                        style={styles.buttonLeft}
+                        activeOpacity={0.7}
+                        onPress={this.moveDrawerNavigation}>
+
+                        <Text style={styles.text}>
+                            {'Drawer'}
+                        </Text>
+
+                    </TouchableOpacity>
+
+                    <TouchableOpacity
+                        style={styles.buttonCenter}
+                        activeOpacity={0.7}
+                        onPress={this.moveAnimation}>
+
+                        <Text style={styles.text}>
+                            {'Animation'}
+                        </Text>
+
+                    </TouchableOpacity>
+
+                    <TouchableOpacity
+                        style={styles.buttonRight}
+                        activeOpacity={0.7}>
+
+                        <Text style={styles.text}>
+                            {'None'}
+                        </Text>
+
+                    </TouchableOpacity>
+
+                </View>
+
             </View>
 
         );
@@ -138,7 +182,8 @@ const styles = StyleSheet.create({
         height: 48,
         flexDirection: 'row',
         alignItems: 'center',
-        justifyContent: 'space-between'
+        justifyContent: 'space-between',
+        marginTop: 10
     },
     buttonLeft: {
         flex: 1,

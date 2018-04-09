@@ -19,7 +19,6 @@ export default class ListViewApp extends Component<Props, State> {
 
     static navigationOptions = ({ navigation }: any) => {
         let params = navigation.state.params;
-        let image = require('../../Images/TabIcon/ic_more.png');
         return {
             headerTitle: (
                 <HeaderTitle
@@ -31,15 +30,15 @@ export default class ListViewApp extends Component<Props, State> {
                 <Image
                     style={globalStyle.tabBarIcon}
                     resizeMode={'contain'}
-                    source={image} />
+                    source={require('../../Images/TabIcon/ic_more.png')} />
             ),
-        }
-    }
-
-    static tabBarOptions = () => {
-        return {
-            activeTintColor: '#000000',
-            inactiveTintColor: '#ffff00'
+            drawerLabel: 'More',
+            drawerIcon: ({ tintColor }: any) => (
+                <Image
+                    style={[globalStyle.drawerIcon, {tintColor: tintColor}]}
+                    resizeMode={'contain'}
+                    source={require('../../Images/DrawerIcon/ic_more.png')} />
+            )
         }
     }
 
@@ -101,4 +100,3 @@ const style = StyleSheet.create({
         height: 24,
     }
 });
-

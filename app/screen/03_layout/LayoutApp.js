@@ -1,6 +1,6 @@
 // @flow
-import React, {Component} from 'react'
-import {StyleSheet, View, Image} from 'react-native'
+import React, { Component } from 'react'
+import { StyleSheet, View, Image } from 'react-native'
 
 import { HeaderTitle } from '../00_Header/HeaderComponent'
 import globalStyle from '../00_Global/GloablStyle'
@@ -24,6 +24,13 @@ export default class LayoutApp extends Component<Props> {
                     resizeMode={'contain'}
                     source={require('../../Images/TabIcon/ic_mail.png')} />
             ),
+            drawerLabel: 'Mail',
+            drawerIcon: ({ tintColor }: any) => (
+                <Image
+                    style={[globalStyle.drawerIcon, {tintColor: tintColor}]}
+                    resizeMode={'contain'}
+                    source={require('../../Images/DrawerIcon/ic_mail.png')} />
+            )
         }
     }
 
@@ -36,15 +43,15 @@ export default class LayoutApp extends Component<Props> {
         return (
             <View style={style.container}>
 
-                <View style={style.fixedChild50}/>
-                <View style={style.fixedChild100}/>
-                <View style={style.fixedChild150}/>
+                <View style={style.fixedChild50} />
+                <View style={style.fixedChild100} />
+                <View style={style.fixedChild150} />
 
                 <View style={style.childContainer}>
 
-                    <View style={style.flexChild1}/>
-                    <View style={style.flexChild2}/>
-                    <View style={style.flexChild3}/>
+                    <View style={style.flexChild1} />
+                    <View style={style.flexChild2} />
+                    <View style={style.flexChild3} />
 
                 </View>
 

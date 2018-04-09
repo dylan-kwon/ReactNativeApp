@@ -1,17 +1,38 @@
 // @flow
-/**
- * 테스트 커밋
- */
-import React, {Component} from 'react';
-import {StyleSheet, Text, TextInput, View} from 'react-native';
+import React, { Component } from 'react';
+import { StyleSheet, Text, TextInput, View, Image } from 'react-native';
 
-type Props = {};
+import DrawerNavigation from '../12_DrawerNavigator/DrawerNavigator';
+
+import { HeaderTitle } from '../00_Header/HeaderComponent';
+import globalStyles from '../00_Global/GloablStyle';
+
+type Props = {
+    naviagtaion: DrawerNavigation
+};
 
 type State = {
     text: string,
 };
 
 export default class TextInputApp extends Component<Props, State> {
+
+    static navigationOptions = ({ navigation }: DrawerNavigation) => {
+        let params = navigation.state.params;
+        let image = require('../../Images/DrawerIcon/ic_home.png')
+        return {
+            headerTitle: (
+                <HeaderTitle title={'Home'} />
+            ),
+            headerTintColor: '#3dbff0',
+            drawerLabel: 'Home',
+            drawerIcon: ({ tintColor }: any) => (
+                <Image
+                    style={[globalStyles.tabBarIcon, { tintColor: tintColor }]}
+                    source={image} />
+            )
+        }
+    }
 
     constructor(props: Props) {
         super(props);
@@ -34,11 +55,11 @@ export default class TextInputApp extends Component<Props, State> {
         return (
             <View style={style.container}>
 
-                <Text style/>
+                <Text style />
 
                 <TextInput
                     style={style.textInput}
-                    placeholder={"Type here to translate!"}
+                    placeholder={'Type here to translate!'}
                     onChangeText={this.onChangeText()}
                 />
 
@@ -59,7 +80,7 @@ const style = StyleSheet.create({
         padding: 10,
     },
     textInput: {
-        height: 40,
+        height: 40
     },
     text: {
         padding: 10,
