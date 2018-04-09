@@ -19,6 +19,7 @@ export default class ListViewApp extends Component<Props, State> {
 
     static navigationOptions = ({ navigation }: any) => {
         let params = navigation.state.params;
+        let image = require('../../Images/TabIcon/ic_more.png');
         return {
             headerTitle: (
                 <HeaderTitle
@@ -29,8 +30,8 @@ export default class ListViewApp extends Component<Props, State> {
             tabBarIcon: (
                 <Image
                     style={globalStyle.tabBarIcon}
-                    resizeMode={'cover'}
-                    source={require('../../Images/TabIcon/ic_more.png')} />
+                    resizeMode={'contain'}
+                    source={image} />
             ),
         }
     }

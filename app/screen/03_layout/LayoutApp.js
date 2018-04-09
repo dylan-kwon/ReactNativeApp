@@ -21,7 +21,7 @@ export default class LayoutApp extends Component<Props> {
             tabBarIcon: (
                 <Image
                     style={globalStyle.tabBarIcon}
-                    resizeMode={'cover'}
+                    resizeMode={'contain'}
                     source={require('../../Images/TabIcon/ic_mail.png')} />
             ),
         }

@@ -1,20 +1,9 @@
 import React from 'react';
-import { StyleSheet } from 'react-native'
 import { TabNavigator as tabNavigator, TabBarBottom } from 'react-navigation';
-
-import { HeaderTitle } from '../00_Header/HeaderComponent';
 
 import LayoutApp from '../03_layout/LayoutApp';
 import ScrollViewApp from '../06_ScrollView/ScrollViewApp';
 import ListViewApp from '../07_ListViewApp/ListViewApp';
-import { Image } from 'react-native';
-
-const styles = StyleSheet.create({
-    tabBarIcon: {
-        width: 24,
-        height: 24,
-    }
-});
 
 export default TabNavigator = tabNavigator(
     {

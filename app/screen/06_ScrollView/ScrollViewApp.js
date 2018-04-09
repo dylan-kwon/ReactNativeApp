@@ -24,7 +24,7 @@ export default class ScrollViewApp extends Component<Props, State> {
             tabBarIcon: (
                 <Image
                     style={globalStyle.tabBarIcon}
-                    resizeMode={'cover'}
+                    resizeMode={'contain'}
                     source={require('../../Images/TabIcon/ic_home.png')} />
             ),
         }
