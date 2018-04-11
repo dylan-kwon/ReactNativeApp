@@ -1,6 +1,6 @@
 // @flow
 import React, { Component } from 'react';
-import { Platform, StyleSheet, View, FlatList, SectionList, ToastAndroid } from 'react-native';
+import { Platform, StyleSheet, View, FlatList, SectionList, ToastAndroid, Alert } from 'react-native';
 
 import RootStackNavigator from '../../App';
 
@@ -12,7 +12,7 @@ import { HeaderTitle } from '../00_Header/HeaderComponent'
 import type { Cleaning } from './CleainngItem';
 import type { CleaningDate } from './CleaningDateItem';
 
-import { fetchCleanings } from '../../util/networking/repository/CleaningRepository';
+import cleaningRepository from '../../util/networking/repository/CleaningRepository';
 
 type Props = {
     navigation: RootStackNavigator
@@ -49,9 +49,9 @@ export default class NetworkingApp extends Component<Props, State> {
     }
 
     componentDidMount() {
-        fetchCleanings(1, 0, 1)
+        cleaningRepository.fetchCleanings(1, 0, 1)
             .then((responseJson) => {
-                let cleaningDates = responseJson.result_data.cleaning_dates;
+                let cleaningDates = responseJson.cleaning_dates;
                 for (let cleaningDate of cleaningDates) {
                     cleaningDate.data = cleaningDate.cleanings;
                 }
@@ -76,7 +76,28 @@ export default class NetworkingApp extends Component<Props, State> {
 
     onPressItem = (item: Cleaning) => {
         return () => {
-            ToastAndroid.show(item.unit.title, ToastAndroid.SHORT);
+            Alert.alert(
+                'Alert Title',
+                'My Alert Msg',
+                [
+                    null,
+                    {
+                        text: 'cancel',
+                        onPress: () => {
+                            ToastAndroid.show('Click', ToastAndroid.show);
+                        }
+                    },
+                    {
+                        text: 'Ok',
+                        onPress: () => {
+                            ToastAndroid.show('Click', ToastAndroid.show);
+                        }
+                    }
+                ],
+                {
+                    cancelable: false
+                }
+            )
         }
     }
 

@@ -1,17 +1,17 @@
-const IS_REAL_SERVER: string = 'http://www.handys.co.kr/';
+const IS_REAL_SERVER: string = 'http://10.0.2.2:8000/';
 
 const RESULT_CODE: Object = {
     SUCCESS: 200,
     FAIL: 210,
     TOKEN_ERROR: 444
-}
+};
 
 const METHOD: Object = {
     GET: 'GET',
     POST: 'POST',
     PUT: 'PUT',
     DELETE: 'DELETE'
-}
+};
 
 const HEADER: Object = {
     'Accept': 'application/json',

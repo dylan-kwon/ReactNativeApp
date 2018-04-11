@@ -12,6 +12,6 @@ function fetchCleanings(type: number, subType: number, page: number) {
         .then((response) => response.json());
 }
 
-export {
-    fetchCleanings
+export default {
+    fetchCleanings: fetchCleanings
 }

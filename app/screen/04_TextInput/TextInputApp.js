@@ -1,10 +1,10 @@
 // @flow
-import React, { Component } from 'react';
-import { StyleSheet, Text, TextInput, View, Image } from 'react-native';
+import React, {Component} from 'react';
+import {Image, StyleSheet, Text, TextInput, View} from 'react-native';
 
 import DrawerNavigation from '../12_DrawerNavigator/DrawerNavigator';
 
-import { HeaderTitle } from '../00_Header/HeaderComponent';
+import {HeaderTitle} from '../00_Header/HeaderComponent';
 import globalStyles from '../00_Global/GloablStyle';
 
 type Props = {
@@ -17,19 +17,19 @@ type State = {
 
 export default class TextInputApp extends Component<Props, State> {
 
-    static navigationOptions = ({ navigation }: DrawerNavigation) => {
+    static navigationOptions = ({navigation}: DrawerNavigation) => {
         let params = navigation.state.params;
         let image = require('../../Images/DrawerIcon/ic_home.png')
         return {
             headerTitle: (
-                <HeaderTitle title={'Home'} />
+                <HeaderTitle title={'Home'}/>
             ),
             headerTintColor: '#3dbff0',
             drawerLabel: 'Home',
-            drawerIcon: ({ tintColor }: any) => (
+            drawerIcon: ({tintColor}: any) => (
                 <Image
-                    style={[globalStyles.tabBarIcon, { tintColor: tintColor }]}
-                    source={image} />
+                    style={[globalStyles.tabBarIcon, {tintColor: tintColor}]}
+                    source={image}/>
             )
         }
     }
@@ -55,7 +55,7 @@ export default class TextInputApp extends Component<Props, State> {
         return (
             <View style={style.container}>
 
-                <Text style />
+                <Text style/>
 
                 <TextInput
                     style={style.textInput}

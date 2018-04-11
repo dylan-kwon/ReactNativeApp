@@ -84,7 +84,15 @@ export default class NavigationHome extends Component<Props, State> {
     }
 
     moveAnimation = () => {
-        this.props.navigation.navigate('Animation')
+        this.props.navigation.navigate('Animation');
+    }
+
+    moveViewPager = () => {
+        this.props.navigation.navigate('ViewPager');
+    }
+
+    moveKakao = () => {
+        this.props.navigation.navigate('Kakao');
     }
 
     render() {
@@ -154,7 +162,43 @@ export default class NavigationHome extends Component<Props, State> {
 
                     <TouchableOpacity
                         style={styles.buttonRight}
+                        activeOpacity={0.7}
+                        onPress={this.moveViewPager} >
+
+                        <Text style={styles.text}>
+                            {'ViewPager'}
+                        </Text>
+
+                    </TouchableOpacity>
+
+                </View>
+
+                <View style={styles.rowContainer}>
+
+                    <TouchableOpacity
+                        style={styles.buttonLeft}
+                        activeOpacity={0.7}
+                        onPress={this.moveKakao}>
+
+                        <Text style={styles.text}>
+                            {'Kakao'}
+                        </Text>
+
+                    </TouchableOpacity>
+
+                    <TouchableOpacity
+                        style={styles.buttonCenter}
                         activeOpacity={0.7}>
+
+                        <Text style={styles.text}>
+                            {'None'}
+                        </Text>
+
+                    </TouchableOpacity>
+
+                    <TouchableOpacity
+                        style={styles.buttonRight}
+                        activeOpacity={0.7} >
 
                         <Text style={styles.text}>
                             {'None'}
