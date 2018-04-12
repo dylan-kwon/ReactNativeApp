@@ -1,9 +1,10 @@
 // @flow
 import React, { Component } from 'react';
-import { StyleSheet, View, Image, TouchableOpacity, Text } from 'react-native';
+import { StyleSheet, View, Image, TouchableOpacity, Text, TouchableHighlight } from 'react-native';
 
 type Props = {
-    channel: Channel
+    channel: Channel,
+    onPress?: ?Function
 };
 
 type State = {
@@ -41,8 +42,9 @@ export default class ChannelItem extends Component<Props, State> {
         }
 
         return (
-            <TouchableOpacity
-                activeOpacity={0.7}>
+            <TouchableHighlight
+                underlayColor={'#000000'}
+                onPress={this.props.onPress} >
 
                 <View style={styles.container}>
 
@@ -85,7 +87,7 @@ export default class ChannelItem extends Component<Props, State> {
 
                 </View>
 
-            </TouchableOpacity>
+            </TouchableHighlight>
         );
     }
 

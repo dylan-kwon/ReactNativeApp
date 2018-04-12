@@ -1,5 +1,5 @@
 import React from 'react';
-import {DrawerNavigator as drawerNavigator} from 'react-navigation';
+import { DrawerNavigator as drawerNavigator } from 'react-navigation';
 
 import TextInputApp from '../04_TextInput/TextInputApp.js'
 import LayoutApp from '../03_layout/LayoutApp';
@@ -21,6 +21,7 @@ export default DrawerNavigator = drawerNavigator(
         title: 'test',
         drawerWidth: 270,
         drawerPosition: 'left',
+        backBehavior: 'none',
         drawerBackgroundColor: '#ffffff',
         contentOptions: {
             activeTintColor: '#3dbff0',

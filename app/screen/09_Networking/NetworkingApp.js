@@ -77,25 +77,28 @@ export default class NetworkingApp extends Component<Props, State> {
     onPressItem = (item: Cleaning) => {
         return () => {
             Alert.alert(
-                'Alert Title',
-                'My Alert Msg',
+                item.unit.title,
+                item.date_str,
                 [
                     null,
                     {
                         text: 'cancel',
                         onPress: () => {
-                            ToastAndroid.show('Click', ToastAndroid.show);
+                            ToastAndroid.show("onPress.canccel", ToastAndroid.show);
                         }
                     },
                     {
-                        text: 'Ok',
+                        text: 'ok',
                         onPress: () => {
-                            ToastAndroid.show('Click', ToastAndroid.show);
+                            ToastAndroid.show("onPress.ok", ToastAndroid.show);
                         }
                     }
                 ],
                 {
-                    cancelable: false
+                    cancelable: true,
+                    onDismiss: () => {
+                        ToastAndroid.show("onDimiss", ToastAndroid.show);
+                    }
                 }
             )
         }

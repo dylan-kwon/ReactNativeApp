@@ -1,21 +1,20 @@
 // @flow
 import React, { Component } from 'react';
-import { StyleSheet, View, Image, Text, TouchableOpacity, TextInput, FlatList, ToastAndroid } from 'react-native';
-
+import { StyleSheet, View, Image, Text, TouchableOpacity, TextInput, FlatList, ToastAndroid, Modal, TouchableHighlight } from 'react-native';
 import RootStackNavigation from '../../App';
 import { HeaderTitle } from '../00_Header/HeaderComponent';
-
+import PopupModal from '../16_Modal/PopupModal';
 import ChannelItem from './ChannelItem';
-
-import type { Channel } from './ChannelItem';
-
 import kakaoRepository from '../../util/networking/repository/KakakoRepository';
+import type { Channel } from './ChannelItem';
 
 type Props = {
     navigation: RootStackNavigation
 };
 
 type State = {
+    isModalVisibility: boolean,
+    channel?: ?Channel,
     channels: Channel[],
     searchChannels: Channel[]
 };
@@ -32,6 +31,7 @@ export default class Kakao extends Component<Props, State> {
     constructor(props: Props) {
         super(props);
         this.state = {
+            isModalVisibility: false,
             channels: [],
             searchChannels: []
         };
@@ -68,6 +68,29 @@ export default class Kakao extends Component<Props, State> {
         ToastAndroid.show('onPressMaximizeButton', ToastAndroid.SHORT);
     }
 
+    onPressChannel = (item: Channel) => {
+        return () => {
+            this.setState((state) => {
+                return {
+                    channel: item,
+                    isModalVisibility: true
+                }
+            });
+        }
+    }
+
+    onPressModalPositive = () => {
+        ToastAndroid.show("onPressModal.Positive", ToastAndroid.SHORT);
+    }
+
+    onPressModalNegative = () => {
+        ToastAndroid.show("onPressModal.Negative", ToastAndroid.SHORT);
+    }
+
+    onModalDismiss = () => {
+        ToastAndroid.show("onModalDismiss", ToastAndroid.SHORT);
+    }
+
     onChangedSearchBarText = (text: string) => {
         let searchChannels: any[];
 
@@ -96,11 +119,14 @@ export default class Kakao extends Component<Props, State> {
     renderChannelItem = ({ item }: any) => {
         return (
             <ChannelItem
-                channel={item} />
+                channel={item}
+                onPress={this.onPressChannel(item)} />
         );
     }
 
     render() {
+        let channel = this.state.channel;
+
         let homeIcon = require('../../Images/DrawerIcon/ic_home.png')
         let mailIcon = require('../../Images/DrawerIcon/ic_mail.png')
         let moreIcon = require('../../Images/DrawerIcon/ic_more.png')
@@ -248,6 +274,14 @@ export default class Kakao extends Component<Props, State> {
                         keyExtractor={this.keyExtractor} />
 
                 </View>
+
+                <PopupModal
+                    title={channel ? channel.name : ""}
+                    description={channel ? channel.preview : ""}
+                    visible={this.state.isModalVisibility}
+                    onPressPositive={this.onPressModalPositive}
+                    onPressNegative={this.onPressModalNegative}
+                    onDismiss={this.onModalDismiss} />
 
             </View>
         );
