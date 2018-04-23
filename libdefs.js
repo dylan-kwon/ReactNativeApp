@@ -18,3 +18,5 @@ declare module 'react-navigation' {
 declare module 'prop-types' {
     declare module.exports: PropTypes
 }
+
+

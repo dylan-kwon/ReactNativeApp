@@ -20,6 +20,8 @@
     "react": "16.2.0",
     "react-native": "0.52.2",
     "react-navigation": "1.5.9",
+    "react-redux": "^5.0.7",
+    "redux": "^4.0.0",
     "webpack": "^4.5.0"
   },
   "devDependencies": {
