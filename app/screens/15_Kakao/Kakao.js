@@ -1,27 +1,23 @@
 // @flow
 import React, { Component } from 'react';
 import RootStackNavigation from '../../App';
-import { HeaderTitle } from '../../components/header';
 import PopupModal from '../16_Modal/PopupModal';
+import type { Channel } from './ChannelItem';
 import ChannelItem from './ChannelItem';
 import { KakaoRepository } from '../../util/network/repository';
 import { LogModule } from '../../util/native_modules'
-import type { Channel } from './ChannelItem';
 
 import {
-    StyleSheet,
-    View,
-    Image,
-    Text,
-    TouchableOpacity,
-    TextInput,
     FlatList,
-    ToastAndroid,
+    Image,
     Linking,
-    Modal,
-    TouchableHighlight,
-    NativeModules,
-    Platform
+    Platform,
+    StyleSheet,
+    Text,
+    TextInput,
+    ToastAndroid,
+    TouchableOpacity,
+    View
 } from 'react-native';
 
 type Props = {
@@ -89,7 +85,7 @@ export default class Kakao extends Component<Props, State> {
                 .catch((error) => {
                     console.error(error);
                 });
-        };
+        }
     }
 
     onPressChannel = (item: Channel) => {
@@ -159,19 +155,19 @@ export default class Kakao extends Component<Props, State> {
         let addIcon = require('../../res/Images/DrawerIcon/ic_add.png')
 
         return (
-            <View style={styles.display} >
+            <View style={styles.display}>
 
                 <View style={styles.iosStatusBar} />
 
                 <View style={styles.container}>
 
-                    <View style={styles.optionBar} >
+                    <View style={styles.optionBar}>
 
-                        <View style={styles.controllButtons} >
+                        <View style={styles.controllButtons}>
 
                             <TouchableOpacity
                                 activeOpacity={0.7}
-                                onPress={this.onPressCloseButton} >
+                                onPress={this.onPressCloseButton}>
 
                                 <View
                                     style={styles.closeButton} />
@@ -180,7 +176,7 @@ export default class Kakao extends Component<Props, State> {
 
                             <TouchableOpacity
                                 activeOpacity={0.7}
-                                onPress={this.onPressMinimizeButton} >
+                                onPress={this.onPressMinimizeButton}>
 
                                 <View
                                     style={styles.minimizeButton} />
@@ -190,7 +186,7 @@ export default class Kakao extends Component<Props, State> {
 
                             <TouchableOpacity
                                 activeOpacity={0.7}
-                                onPress={this.onPressMaximizeButton} >
+                                onPress={this.onPressMaximizeButton}>
 
                                 <View
                                     style={styles.maximizeButton} />
@@ -200,7 +196,7 @@ export default class Kakao extends Component<Props, State> {
                         </View>
 
                         <TouchableOpacity
-                            activeOpacity={0.7} >
+                            activeOpacity={0.7}>
 
                             <Image
                                 style={styles.homeTabIcon}
@@ -211,7 +207,7 @@ export default class Kakao extends Component<Props, State> {
                         </TouchableOpacity>
 
                         <TouchableOpacity
-                            activeOpacity={0.7} >
+                            activeOpacity={0.7}>
 
                             <Image
                                 style={styles.mailTabIcon}
@@ -222,7 +218,7 @@ export default class Kakao extends Component<Props, State> {
                         </TouchableOpacity>
 
                         <TouchableOpacity
-                            activeOpacity={0.7} >
+                            activeOpacity={0.7}>
 
                             <Image
                                 style={styles.moreTabIcon}
@@ -234,10 +230,10 @@ export default class Kakao extends Component<Props, State> {
 
                         <View style={styles.flexDummy} />
 
-                        <View style={styles.bottomTabs} >
+                        <View style={styles.bottomTabs}>
 
                             <TouchableOpacity
-                                activeOpacity={0.7} >
+                                activeOpacity={0.7}>
 
                                 <Image
                                     style={styles.noticeTabIcon}
@@ -248,7 +244,7 @@ export default class Kakao extends Component<Props, State> {
                             </TouchableOpacity>
 
                             <TouchableOpacity
-                                activeOpacity={0.7} >
+                                activeOpacity={0.7}>
 
                                 <Image
                                     style={styles.settingTabIcon}
@@ -262,7 +258,7 @@ export default class Kakao extends Component<Props, State> {
 
                     </View>
 
-                    <View style={styles.contents} >
+                    <View style={styles.contents}>
 
                         <View style={styles.header}>
 
@@ -273,7 +269,7 @@ export default class Kakao extends Component<Props, State> {
                             <View style={styles.flexDummy} />
 
                             <TouchableOpacity
-                                activeOpacity={0.7} >
+                                activeOpacity={0.7}>
 
                                 <Image
                                     style={styles.addIcon}
