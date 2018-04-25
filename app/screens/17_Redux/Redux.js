@@ -6,7 +6,7 @@ import { HeaderTitle } from '../../components/header';
 import { Counter } from '../../components/counter'
 import { createStore } from 'redux';
 import { Provider } from 'react-redux';
-import { counterReducer } from '../../reducers';
+import reducers from '../../reducers';
 
 type Props = {
     navigation: RootStackNavigation
@@ -34,7 +34,7 @@ export default class Redux extends Component<Props, State> {
 
     render() {
         return (
-            <Provider store={createStore(counterReducer)} >
+            <Provider store={createStore(reducers)} >
                 <View style={styles.container}>
 
                     <Text style={styles.title} >

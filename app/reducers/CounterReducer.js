@@ -1,16 +1,15 @@
 // @flow
-import { CounterAction } from '../actions';
+import actions from '../actions';
 
 const count: number = 0;
-const type: Object = CounterAction.type;
 
 function counterReducer(state: number = count, action: Object) {
     switch (action.type) {
-        case type.COUNT_UP:
-            return state + action.payload;
+        case actions.type.COUNT_UP:
+            return state + action.payload.count;
 
-        case type.COUNT_DOWN:
-            return state + action.payload
+        case actions.type.COUNT_DOWN:
+            return state - action.payload.count;
 
         default:
             return state;

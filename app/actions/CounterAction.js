@@ -1,25 +1,33 @@
 // @flow
-const type: Object = {
+
+const actionType = {
     COUNT_UP: 'COUNT_UP',
     COUNT_DOWN: 'COUNT_DOWN'
 };
 
-function countUp(num: number) {
+function countUp(count: number) {
     return {
-        type: type.COUNT_UP,
-        payload: num
+        type: actionType.COUNT_UP,
+        payload: {
+            count: count
+        }
     }
 }
 
-function countDown(num: number) {
+function countDown(count: number) {
     return {
-        type: type.COUNT_DOWN,
-        payload: num
+        type: actionType.COUNT_DOWN,
+        payload: {
+            count: count
+        }
     }
+}
+
+export {
+    actionType
 }
 
 export default {
-    type,
     countUp,
     countDown
 }

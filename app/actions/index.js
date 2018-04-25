@@ -1,6 +1,12 @@
 // @flow
-import CounterAction from './CounterAction';
+import CounterAction, { actionType as counterActionType } from './CounterAction';
 
-export {
-    CounterAction
-};
+const actions = Object.assign({},
+    CounterAction,
+);
+
+actions.type = Object.assign({},
+    counterActionType,
+);
+
+export default actions;

@@ -1,6 +1,7 @@
 // @flow
+import { combineReducers } from 'redux';
 import counterReducer from './CounterReducer';
 
-export {
-    counterReducer
-};
+export default combineReducers({
+    counterReducer: counterReducer
+})

@@ -1,17 +1,41 @@
 // @flow
 import React, { Component } from 'react';
 import { StyleSheet, View, Text, TouchableOpacity } from 'react-native';
-import { CounterAction } from '../../actions';
+import { connect } from 'react-redux'
+import actions from '../../actions';
+
+function mapStateToProps(state) {
+    return {
+        count: state.counterReducer
+    };
+}
+
+function mapDispatchToProps(dispatch) {
+    return {
+        countUp: (num) => {
+            dispatch(actions.countUp(num));
+        },
+        countDown: (num) => {
+            dispatch(actions.countDown(num));
+        }
+    };
+}
 
 type Props = {
     style?: Object,
-    CounterAction: Object
+    count?: number,
+    countUp?: Function,
+    countDown?: Function
 };
 
 type State = {
 };
 
-export default class Counter extends Component<Props, State> {
+class Counter extends Component<Props, State> {
+
+    static defaultProps = {
+        count: 0
+    }
 
     constructor(props: Props) {
         super(props);
@@ -19,15 +43,22 @@ export default class Counter extends Component<Props, State> {
     }
 
     render() {
+        const {
+            countUp,
+            countDown
+        } = this.props;
+
+        if (!countUp || !countDown) {
+            return;
+        }
+
         return (
             <View style={[styles.container, this.props.style]}>
 
                 <TouchableOpacity
                     style={styles.plusButton}
                     activeOpacity={0.7}
-                    onPress={() => {
-                        this.props.CounterAction.countUp(1)
-                    }} >
+                    onPress={() => countUp(1)} >
 
                     <Text style={styles.font} >
                         {'+1'}
@@ -38,9 +69,7 @@ export default class Counter extends Component<Props, State> {
                 <TouchableOpacity
                     style={[styles.plusButton, styles.buttonMarginLeft]}
                     activeOpacity={0.7}
-                    onPress={() => {
-                        this.props.CounterAction.countUp(2)
-                    }} >
+                    onPress={() => countUp(2)} >
 
                     <Text style={styles.font} >
                         {'+2'}
@@ -49,15 +78,13 @@ export default class Counter extends Component<Props, State> {
                 </TouchableOpacity>
 
                 <Text style={[styles.count, styles.font]} >
-                    {'0'}
+                    {this.props.count}
                 </Text>
 
                 <TouchableOpacity
                     style={[styles.minusButton, styles.buttonMarginRight]}
                     activeOpacity={0.7}
-                    onPress={() => {
-                        this.props.CounterAction.countDown(-1)
-                    }} >
+                    onPress={() => countDown(1)} >
 
                     <Text style={styles.font} >
                         {'-1'}
@@ -68,9 +95,7 @@ export default class Counter extends Component<Props, State> {
                 <TouchableOpacity
                     style={styles.minusButton}
                     activeOpacity={0.7}
-                    onPress={() => {
-                        this.props.CounterAction.countDown(-2)
-                    }} >
+                    onPress={() => countDown(2)} >
 
                     <Text style={styles.font} >
                         {'-2'}
@@ -83,6 +108,8 @@ export default class Counter extends Component<Props, State> {
     }
 
 }
+
+export default connect(mapStateToProps, mapDispatchToProps)(Counter);
 
 const styles = StyleSheet.create({
     container: {
