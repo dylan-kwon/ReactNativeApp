@@ -30,9 +30,9 @@ function makeFetch(url: string, method: string, header: ?Object, body: ?Object) 
     }
 
     if (header) {
-        header = mergeHeader(copyHeader(HEADER), header);
+        header = Object.assign({}, HEADER, header);
     } else {
-        header = copyHeader(HEADER);
+        header = Object.assign({}, HEADER);
     }
 
     let request = {

@@ -3,18 +3,24 @@ import React, { Component } from 'react';
 import { StyleSheet, View, Text } from 'react-native';
 import RootStackNavigation from '../../App';
 import { HeaderTitle } from '../../components/header';
-import { Counter } from '../../components/counter'
-import { createStore } from 'redux';
+import Counter from '../../components/counter'
+import { Store, createStore } from 'redux';
 import { Provider } from 'react-redux';
-import reducers from '../../reducers';
+import reducers from '../../reducers/';
 
 type Props = {
+    store: Store,
     navigation: RootStackNavigation
 };
 
-type State = {};
+type State = {
+};
 
 export default class Redux extends Component<Props, State> {
+
+    static defaultProps = {
+        store: createStore(reducers)
+    }
 
     constructor(props: Props) {
         super(props);
@@ -34,7 +40,7 @@ export default class Redux extends Component<Props, State> {
 
     render() {
         return (
-            <Provider store={createStore(reducers)} >
+            <Provider store={this.props.store} >
                 <View style={styles.container}>
 
                     <Text style={styles.title} >

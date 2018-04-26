@@ -2,7 +2,8 @@
 
 const actionType = {
     COUNT_UP: 'COUNT_UP',
-    COUNT_DOWN: 'COUNT_DOWN'
+    COUNT_DOWN: 'COUNT_DOWN',
+    COUNT_RESET: 'COUNT_RESET',
 };
 
 function countUp(count: number) {
@@ -23,11 +24,21 @@ function countDown(count: number) {
     }
 }
 
+function countReset() {
+    return {
+        type: actionType.COUNT_RESET,
+        payload: {
+            count: 0
+        }
+    }
+}
+
 export {
     actionType
 }
 
 export default {
     countUp,
-    countDown
+    countDown,
+    countReset
 }

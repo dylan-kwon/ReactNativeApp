@@ -1,41 +1,17 @@
 // @flow
 import React, { Component } from 'react';
 import { StyleSheet, View, Text, TouchableOpacity } from 'react-native';
-import { connect } from 'react-redux'
-import actions from '../../actions';
-
-function mapStateToProps(state) {
-    return {
-        count: state.counterReducer
-    };
-}
-
-function mapDispatchToProps(dispatch) {
-    return {
-        countUp: (num) => {
-            dispatch(actions.countUp(num));
-        },
-        countDown: (num) => {
-            dispatch(actions.countDown(num));
-        }
-    };
-}
 
 type Props = {
     style?: Object,
-    count?: number,
-    countUp?: Function,
-    countDown?: Function
+    actions?: Object,
+    reducers?: Object,
 };
 
 type State = {
 };
 
-class Counter extends Component<Props, State> {
-
-    static defaultProps = {
-        count: 0
-    }
+export default class Counter extends Component<Props, State> {
 
     constructor(props: Props) {
         super(props);
@@ -44,11 +20,11 @@ class Counter extends Component<Props, State> {
 
     render() {
         const {
-            countUp,
-            countDown
+            actions,
+            reducers
         } = this.props;
 
-        if (!countUp || !countDown) {
+        if (!actions || !reducers) {
             return;
         }
 
@@ -58,7 +34,7 @@ class Counter extends Component<Props, State> {
                 <TouchableOpacity
                     style={styles.plusButton}
                     activeOpacity={0.7}
-                    onPress={() => countUp(1)} >
+                    onPress={() => actions.countUp(1)} >
 
                     <Text style={styles.font} >
                         {'+1'}
@@ -69,7 +45,7 @@ class Counter extends Component<Props, State> {
                 <TouchableOpacity
                     style={[styles.plusButton, styles.buttonMarginLeft]}
                     activeOpacity={0.7}
-                    onPress={() => countUp(2)} >
+                    onPress={() => actions.countUp(2)} >
 
                     <Text style={styles.font} >
                         {'+2'}
@@ -78,13 +54,13 @@ class Counter extends Component<Props, State> {
                 </TouchableOpacity>
 
                 <Text style={[styles.count, styles.font]} >
-                    {this.props.count}
+                    {reducers.count}
                 </Text>
 
                 <TouchableOpacity
                     style={[styles.minusButton, styles.buttonMarginRight]}
                     activeOpacity={0.7}
-                    onPress={() => countDown(1)} >
+                    onPress={() => actions.countDown(1)} >
 
                     <Text style={styles.font} >
                         {'-1'}
@@ -93,9 +69,9 @@ class Counter extends Component<Props, State> {
                 </TouchableOpacity>
 
                 <TouchableOpacity
-                    style={styles.minusButton}
+                    style={[styles.minusButton, styles.buttonMarginRight]}
                     activeOpacity={0.7}
-                    onPress={() => countDown(2)} >
+                    onPress={() => actions.countDown(2)} >
 
                     <Text style={styles.font} >
                         {'-2'}
@@ -103,13 +79,21 @@ class Counter extends Component<Props, State> {
 
                 </TouchableOpacity>
 
+                <TouchableOpacity
+                    style={[styles.minusButton]}
+                    activeOpacity={0.7}
+                    onPress={() => actions.countReset()} >
+
+                    <Text style={styles.font} >
+                        {'R'}
+                    </Text>
+
+                </TouchableOpacity>
+
             </View>
         );
     }
-
 }
-
-export default connect(mapStateToProps, mapDispatchToProps)(Counter);
 
 const styles = StyleSheet.create({
     container: {
@@ -134,6 +118,14 @@ const styles = StyleSheet.create({
         width: 48,
         height: 48,
         backgroundColor: 'pink',
+        borderRadius: 24,
+        justifyContent: 'center',
+        alignItems: 'center'
+    },
+    optinoButton: {
+        width: 48,
+        height: 48,
+        backgroundColor: '#acd04a',
         borderRadius: 24,
         justifyContent: 'center',
         alignItems: 'center'

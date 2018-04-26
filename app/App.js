@@ -8,7 +8,7 @@ import DrawerNavigator from './screens/12_DrawerNavigator/DrawerNavigator';
 import Animation from './screens/13_Animation/Animation';
 import ViewPager from './screens/14_ViewPager/ViewPager';
 import Kakao from './screens/15_Kakao/Kakao';
-import Redux from './screens/17_Redux/Redux';
+import Redux from './screens/17_Redux';
 
 export const screenTag: Object = {
     HOME: 'Home',
