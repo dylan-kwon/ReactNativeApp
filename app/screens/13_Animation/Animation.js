@@ -2,7 +2,7 @@
 import React, { Component } from 'react';
 import { Animated, StyleSheet, View, Button, TouchableOpacity, Text, ScrollView, Image, Easing } from 'react-native';
 
-import RootStackNavigator from '../../App';
+import RootStackNavigator from '../../AppNavigation';
 import { HeaderTitle } from '../../components/header';
 
 import images from '../../res/Images/Images';

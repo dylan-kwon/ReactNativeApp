@@ -59,26 +59,6 @@ function makeFetch(url: string, method: string, header: ?Object, body: ?Object) 
     return fetch(url, request);
 }
 
-function copyHeader(header: Object): Object {
-    let copyHeader = {};
-    for (let key in header) {
-        let value = header[key];
-        copyHeader[key] = value;
-    }
-    return copyHeader;
-}
-
-function mergeHeader(header1?: ?Object, header2: Object): Object {
-    if (!header1) {
-        header1 = copyHeader(HEADER);
-    }
-    for (let key in header2) {
-        let value = header2[key];
-        header1[key] = value;
-    }
-    return header1;
-}
-
 export {
     SERVER_URL,
     SERVER_TYPE,

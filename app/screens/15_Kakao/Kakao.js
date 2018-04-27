@@ -1,6 +1,6 @@
 // @flow
 import React, { Component } from 'react';
-import RootStackNavigation from '../../App';
+import RootStackNavigation from '../../AppNavigation';
 import PopupModal from '../16_Modal/PopupModal';
 import type { Channel } from './ChannelItem';
 import ChannelItem from './ChannelItem';

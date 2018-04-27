@@ -2,7 +2,7 @@
 import React, { Component } from 'react';
 import { StyleSheet, View, ViewPagerAndroid, ToastAndroid } from 'react-native';
 
-import RootStackNavigation from '../../App';
+import RootStackNavigation from '../../AppNavigation';
 import { HeaderTitle } from '../../components/header';
 
 type Props = {

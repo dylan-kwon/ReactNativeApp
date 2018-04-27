@@ -1,14 +1,13 @@
 // @flow
 import React, { Component } from 'react';
 import { StyleSheet, View, Button, Text, TouchableOpacity, Image, ToastAndroid } from 'react-native';
-
-import RootStackNavigator, { screenTag } from '../../App'
-
+import RootStackNavigator, { screenTag } from '../../AppNavigation'
 import CleaningList from '../09_Networking/NetworkingApp'
 import { HeaderTitle, HeaderLeft, HeaderRight } from '../../components/header'
 
 type Props = {
-    navigation: RootStackNavigator
+    navigation: RootStackNavigator,
+    reducers?: Object
 };
 
 type State = {
@@ -100,6 +99,14 @@ export default class NavigationHome extends Component<Props, State> {
     }
 
     render() {
+        const {
+            reducers
+        } = this.props
+
+        if (!reducers) {
+            return;
+        }
+
         return (
             <View style={styles.container}>
 
@@ -206,7 +213,7 @@ export default class NavigationHome extends Component<Props, State> {
                         activeOpacity={0.7} >
 
                         <Text style={styles.text}>
-                            {'None'}
+                            {reducers.count}
                         </Text>
 
                     </TouchableOpacity>

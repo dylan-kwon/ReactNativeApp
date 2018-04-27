@@ -2,7 +2,7 @@
 import React, { Component } from 'react';
 import { Platform, StyleSheet, View, FlatList, SectionList, ToastAndroid, Alert } from 'react-native';
 
-import RootStackNavigator from '../../App';
+import RootStackNavigator from '../../AppNavigation';
 
 import CleaningItem from './CleainngItem';
 import CleaningDateItem from './CleaningDateItem';
