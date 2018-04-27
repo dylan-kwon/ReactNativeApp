@@ -1,7 +1,7 @@
 // @flow
 import React, { Component } from 'react';
 import RootStackNavigation from '../../AppNavigation';
-import PopupModal from '../16_Modal/PopupModal';
+import { PopupModal } from '../../components/modals';
 import type { Channel } from './ChannelItem';
 import ChannelItem from './ChannelItem';
 import { KakaoRepository } from '../../util/network/repository';
@@ -305,7 +305,8 @@ export default class Kakao extends Component<Props, State> {
                         visible={this.state.isModalVisibility}
                         onPressPositive={this.onPressModalPositive}
                         onPressNegative={this.onPressModalNegative}
-                        onDismiss={this.onModalDismiss} />
+                        onDismiss={this.onModalDismiss}
+                        dimAmount={0.7} />
 
                 </View>
             </View>
