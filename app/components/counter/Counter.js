@@ -34,6 +34,17 @@ export default class Counter extends Component<Props, State> {
                 <TouchableOpacity
                     style={styles.plusButton}
                     activeOpacity={0.7}
+                    onPress={() => actions.countRandom()} >
+
+                    <Text style={styles.font} >
+                        {'?'}
+                    </Text>
+
+                </TouchableOpacity>
+
+                <TouchableOpacity
+                    style={[styles.plusButton, styles.buttonMarginLeft]}
+                    activeOpacity={0.7}
                     onPress={() => actions.countUp(1)} >
 
                     <Text style={styles.font} >
@@ -54,7 +65,7 @@ export default class Counter extends Component<Props, State> {
                 </TouchableOpacity>
 
                 <Text style={[styles.count, styles.font]} >
-                    {reducers.count}
+                    {reducers.counterReducer}
                 </Text>
 
                 <TouchableOpacity
