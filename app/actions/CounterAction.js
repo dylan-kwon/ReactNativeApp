@@ -3,6 +3,7 @@ const actionType = {
     COUNT_UP: 'COUNT_UP',
     COUNT_DOWN: 'COUNT_DOWN',
     COUNT_RESET: 'COUNT_RESET',
+    COUNT_RANDOM: 'COUNT_RANDOM'
 };
 
 function countUp(count: number) {
@@ -32,6 +33,15 @@ function countReset() {
     }
 }
 
+function countRandom() {
+    return {
+        type: actionType.COUNT_RANDOM,
+        payload: {
+            count: Math.floor(Math.random() * 10) + 1
+        }
+    }
+}
+
 export {
     actionType
 }
@@ -39,5 +49,6 @@ export {
 export default {
     countUp,
     countDown,
-    countReset
+    countReset,
+    countRandom
 }

@@ -1,6 +1,6 @@
 // @flow
 import React, { Component } from 'react';
-import { StyleSheet, View, Text } from 'react-native';
+import { StyleSheet, View, Text, Button, ToastAndroid } from 'react-native';
 import RootStackNavigation from '../../AppNavigation';
 import { HeaderTitle } from '../../components/header';
 import Counter from '../../components/counter'
@@ -14,11 +14,6 @@ type State = {
 
 export default class Redux extends Component<Props, State> {
 
-    constructor(props: Props) {
-        super(props);
-        this.state = {};
-    }
-
     static navigationOptions = ({ navigation }: RootStackNavigation) => {
         let params = navigation.state.params;
         return {
@@ -30,6 +25,25 @@ export default class Redux extends Component<Props, State> {
         }
     };
 
+    counter: Counter;
+
+    constructor(props: Props) {
+        super(props);
+        this.state = {};
+    }
+
+    counterRef = (ref: any) => {
+        this.counter = ref.getWrappedInstance();
+    }
+
+    onPressButton = () => {
+        let counterProps = this.counter.props;
+        const {
+            reducers
+        } = counterProps;
+        ToastAndroid.show('count: ' + reducers.counterReducer, ToastAndroid.SHORT);
+    }
+
     render() {
         return (
             <View style={styles.container}>
@@ -38,7 +52,13 @@ export default class Redux extends Component<Props, State> {
                     {'React Native & Redux Eexample'}
                 </Text>
 
-                <Counter style={styles.counter} />
+                <Counter
+                    style={styles.counter}
+                    ref={this.counterRef} />
+
+                <Button style={styles.showCount}
+                    title={'click'}
+                    onPress={this.onPressButton} />
 
             </View>
         );
@@ -58,6 +78,12 @@ const styles = StyleSheet.create({
         fontSize: 16,
     },
     counter: {
-        marginTop: 30
+        marginTop: 30,
+        marginBottom: 30
+    },
+    showCount: {
+        width: 150,
+        height: 50,
+        fontSize: 14
     }
 });

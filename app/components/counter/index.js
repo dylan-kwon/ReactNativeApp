@@ -6,7 +6,7 @@ import actions from '../../actions';
 function mapStateToProps(state) {
     return {
         reducers: {
-            count: state.counterReducer
+            counterReducer: state.counterReducer
         }
     };
 }
@@ -22,9 +22,16 @@ function mapDispatchToProps(dispatch) {
             },
             countReset: () => {
                 dispatch(actions.countReset());
+            },
+            countRandom: () => {
+                dispatch(actions.countRandom());
             }
         }
     };
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Counter);
+const option = {
+    withRef: true
+}
+
+export default connect(mapStateToProps, mapDispatchToProps, null, option)(Counter);

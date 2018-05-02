@@ -14,6 +14,9 @@ function counterReducer(state: number = DEFAULT_COUNT, action: Object) {
         case actions.type.COUNT_RESET:
             return action.payload.count;
 
+        case actions.type.COUNT_RANDOM:
+            return action.payload.count;
+
         default:
             return state;
     }
